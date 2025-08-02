@@ -28,17 +28,18 @@ public class ConsultaMoneda {
                 .send(request, HttpResponse.BodyHandlers.ofString());
 
         String json = response.body();
-        System.out.println(json);
+        //System.out.println(json);
         return json;
     }
 
     public static DatosExchangeRate parsearJson(String json) {
         Gson gson = new Gson();
         DatosExchangeRate respuestaAPI = gson.fromJson(json, DatosExchangeRate.class);
-        System.out.println(respuestaAPI);
+        //System.out.println(respuestaAPI);
         return respuestaAPI;
 
     }
+
 }
 
 
