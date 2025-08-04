@@ -57,9 +57,26 @@ public class Main {
                 var servicio = new ServicioDeConversion();
                 Monedas monedaConvertida = servicio.convertirDeJson(json);
 
+
+            String montoIngresado;
+            double monto;
+
+            while (true) {
                 System.out.println("Ingrese el monto a convertir: ");
-                String montoIngresado = lectura.nextLine();
-                double monto = Double.parseDouble(montoIngresado);
+                montoIngresado = lectura.nextLine();
+
+                try {
+                    monto = Double.parseDouble(montoIngresado);
+                    if (monto <= 0) {
+                        System.out.println("El monto debe ser mayor a 0. Ingrese un monto válido.");
+                    } else {
+                        break; // sale del bucle si el monto es válido
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Ingrese un número válido (use punto como separador decimal).");
+                }
+            }
+
 
                 System.out.println(montoIngresado+" "+monedaBase+" equivalen a "+(monto*monedaConvertida.tasaConversion)+" "+monedaDeseada);
                 System.out.println();
