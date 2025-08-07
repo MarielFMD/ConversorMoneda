@@ -1,3 +1,6 @@
+package com.aluracursos.coinverter.servicios;
+
+import com.aluracursos.coinverter.modelos.DatosExchangeRate;
 import com.google.gson.Gson;
 
 
@@ -15,18 +18,26 @@ public class ConsultaMoneda {
         return direccion;
     }
 
-    public static String consultarURL(String direccion) throws IOException, InterruptedException {
+    public static String consultarURL(String direccion) {
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(direccion))
                 .build();
 
-        HttpResponse<String> response = client
-                .send(request, HttpResponse.BodyHandlers.ofString());
+        try {
+            HttpResponse<String> response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
 
-        String json = response.body();
-        return json;
+            String json = response.body();
+            return json;
+        }catch (IOException e) {
+            throw new RuntimeException("Error de conexión con la API. Verifique su conexión a internet.");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException("La consulta a la API fue interrumpida.");
+
+        }
     }
 
     public static DatosExchangeRate parsearJson(String json) {

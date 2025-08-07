@@ -1,8 +1,13 @@
-import java.io.IOException;
+package com.aluracursos.coinverter.app;
+
+import com.aluracursos.coinverter.modelos.Monedas;
+import com.aluracursos.coinverter.servicios.ConsultaMoneda;
+import com.aluracursos.coinverter.servicios.ServicioDeConversion;
+
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) {
         presentarApp();
 
         while (true){
@@ -45,7 +50,7 @@ public class Main {
                     return;
                 default:
                     System.out.println("Error. Ingrese una opción válida");
-                    System.out.println();;
+                    System.out.println();
                     continue;
             }
                 //crea la URL a partir de la opcion seleccionada
@@ -78,7 +83,7 @@ public class Main {
             }
 
 
-                System.out.println(montoIngresado+" "+monedaBase+" equivalen a "+(monto*monedaConvertida.tasaConversion)+" "+monedaDeseada);
+                System.out.println(montoIngresado+" "+monedaBase+" equivalen a "+(monto* monedaConvertida.getTasaConversion())+" "+monedaDeseada);
                 System.out.println();
             }
 
@@ -90,7 +95,7 @@ public class Main {
 
     public static void presentarApp() {
         System.out.println("""
-                ********************************** 
+                **********************************
                            COINVERTER
                 **********************************
                 """);
@@ -98,15 +103,18 @@ public class Main {
 
     public static void mostrarMenu() {
         System.out.println("""
-                       MENÚ DE MONEDAS:
-            *************************************    
-            1 - PESO ARGENTINO A DOLAR AMERICANO
-            2 - DOLAR AMERICANO A PESO ARGENTINO
-            3 - PESO ARGENTINO A EURO
-            4 - EURO A PESO ARGENTINO
-            5 - PESO ARGENTINO A REAL BRASILEÑO
-            6 - REAL BRASILEÑO A PESO ARGENTINO
-            7 - SALIR
+            
+                ------------ MENÚ DE MONEDAS ------------
+            
+                 1 - Peso Argentino  →  Dólar Americano
+                 2 - Dólar Americano →  Peso Argentino
+                 3 - Peso Argentino  →  Euro
+                 4 - Euro            →  Peso Argentino
+                 5 - Peso Argentino  →  Real Brasileño
+                 6 - Real Brasileño  →  Peso Argentino
+                 7 - Salir
+   
+                ------------------------------------------
             """);
     }
 }

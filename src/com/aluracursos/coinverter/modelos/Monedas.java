@@ -1,6 +1,13 @@
+package com.aluracursos.coinverter.modelos;
+
 public class Monedas {
     String monedaBase;
     String monedaDeseada;
+
+    public float getTasaConversion() {
+        return tasaConversion;
+    }
+
     float tasaConversion;
 
     public Monedas(DatosExchangeRate datosJson) {
