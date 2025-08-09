@@ -4,6 +4,7 @@ import com.aluracursos.coinverter.modelos.Monedas;
 import com.aluracursos.coinverter.servicios.ConsultaMoneda;
 import com.aluracursos.coinverter.servicios.ServicioDeConversion;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -82,9 +83,9 @@ public class Main {
                 }
             }
 
-
-                System.out.println(montoIngresado+" "+monedaBase+" equivalen a "+(monto* monedaConvertida.getTasaConversion())+" "+monedaDeseada);
-                System.out.println();
+            System.out.println(montoIngresado + " " + monedaBase + " equivalen a " +
+                    String.format(Locale.US, "%.2f", monto * monedaConvertida.getTasaConversion()) + " " + monedaDeseada);
+            System.out.println();
             }
 
 
@@ -95,15 +96,15 @@ public class Main {
 
     public static void presentarApp() {
         System.out.println("""
-                **********************************
-                           COINVERTER
-                **********************************
-                """);
+                    
+                    **********************************
+                               COINVERTER
+                    **********************************
+            """);
     }
 
     public static void mostrarMenu() {
         System.out.println("""
-            
                 ------------ MENÚ DE MONEDAS ------------
             
                  1 - Peso Argentino  →  Dólar Americano
